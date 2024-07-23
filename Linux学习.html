@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Linux学习</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet"
+    href="file:///c:\Users\CJHHZZX\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.13\crossnote\dependencies\katex\katex.min.css">
+
+
+
+
+
+  <style>
+    code[class*=language-],
+    pre[class*=language-] {
+      color: #333;
+      background: 0 0;
+      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      text-align: left;
+      white-space: pre;
+      word-spacing: normal;
+      word-break: normal;
+      word-wrap: normal;
+      line-height: 1.4;
+      -moz-tab-size: 8;
+      -o-tab-size: 8;
+      tab-size: 8;
+      -webkit-hyphens: none;
+      -moz-hyphens: none;
+      -ms-hyphens: none;
+      hyphens: none
+    }
+
+    pre[class*=language-] {
+      padding: .8em;
+      overflow: auto;
+      border-radius: 3px;
+      background: #f5f5f5
+    }
+
+    :not(pre)>code[class*=language-] {
+      padding: .1em;
+      border-radius: .3em;
+      white-space: normal;
+      background: #f5f5f5
+    }
+
+    .token.blockquote,
+    .token.comment {
+      color: #969896
+    }
+
+    .token.cdata {
+      color: #183691
+    }
+
+    .token.doctype,
+    .token.macro.property,
+    .token.punctuation,
+    .token.variable {
+      color: #333
+    }
+
+    .token.builtin,
+    .token.important,
+    .token.keyword,
+    .token.operator,
+    .token.rule {
+      color: #a71d5d
+    }
+
+    .token.attr-value,
+    .token.regex,
+    .token.string,
+    .token.url {
+      color: #183691
+    }
+
+    .token.atrule,
+    .token.boolean,
+    .token.code,
+    .token.command,
+    .token.constant,
+    .token.entity,
+    .token.number,
+    .token.property,
+    .token.symbol {
+      color: #0086b3
+    }
+
+    .token.prolog,
+    .token.selector,
+    .token.tag {
+      color: #63a35c
+    }
+
+    .token.attr-name,
+    .token.class,
+    .token.class-name,
+    .token.function,
+    .token.id,
+    .token.namespace,
+    .token.pseudo-class,
+    .token.pseudo-element,
+    .token.url-reference .token.variable {
+      color: #795da3
+    }
+
+    .token.entity {
+      cursor: help
+    }
+
+    .token.title,
+    .token.title .token.punctuation {
+      font-weight: 700;
+      color: #1d3e81
+    }
+
+    .token.list {
+      color: #ed6a43
+    }
+
+    .token.inserted {
+      background-color: #eaffea;
+      color: #55a532
+    }
+
+    .token.deleted {
+      background-color: #ffecec;
+      color: #bd2c00
+    }
+
+    .token.bold {
+      font-weight: 700
+    }
+
+    .token.italic {
+      font-style: italic
+    }
+
+    .language-json .token.property {
+      color: #183691
+    }
+
+    .language-markup .token.tag .token.punctuation {
+      color: #333
+    }
+
+    .language-css .token.function,
+    code.language-css {
+      color: #0086b3
+    }
+
+    .language-yaml .token.atrule {
+      color: #63a35c
+    }
+
+    code.language-yaml {
+      color: #183691
+    }
+
+    .language-ruby .token.function {
+      color: #333
+    }
+
+    .language-markdown .token.url {
+      color: #795da3
+    }
+
+    .language-makefile .token.symbol {
+      color: #795da3
+    }
+
+    .language-makefile .token.variable {
+      color: #183691
+    }
+
+    .language-makefile .token.builtin {
+      color: #0086b3
+    }
+
+    .language-bash .token.keyword {
+      color: #0086b3
+    }
+
+    pre[data-line] {
+      position: relative;
+      padding: 1em 0 1em 3em
+    }
+
+    pre[data-line] .line-highlight-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: transparent;
+      display: block;
+      width: 100%
+    }
+
+    pre[data-line] .line-highlight {
+      position: absolute;
+      left: 0;
+      right: 0;
+      padding: inherit 0;
+      margin-top: 1em;
+      background: hsla(24, 20%, 50%, .08);
+      background: linear-gradient(to right, hsla(24, 20%, 50%, .1) 70%, hsla(24, 20%, 50%, 0));
+      pointer-events: none;
+      line-height: inherit;
+      white-space: pre
+    }
+
+    pre[data-line] .line-highlight:before,
+    pre[data-line] .line-highlight[data-end]:after {
+      content: attr(data-start);
+      position: absolute;
+      top: .4em;
+      left: .6em;
+      min-width: 1em;
+      padding: 0 .5em;
+      background-color: hsla(24, 20%, 50%, .4);
+      color: #f4f1ef;
+      font: bold 65%/1.5 sans-serif;
+      text-align: center;
+      vertical-align: .3em;
+      border-radius: 999px;
+      text-shadow: none;
+      box-shadow: 0 1px #fff
+    }
+
+    pre[data-line] .line-highlight[data-end]:after {
+      content: attr(data-end);
+      top: auto;
+      bottom: .4em
+    }
+
+    html body {
+      font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fff;
+      overflow: initial;
+      box-sizing: border-box;
+      word-wrap: break-word
+    }
+
+    html body>:first-child {
+      margin-top: 0
+    }
+
+    html body h1,
+    html body h2,
+    html body h3,
+    html body h4,
+    html body h5,
+    html body h6 {
+      line-height: 1.2;
+      margin-top: 1em;
+      margin-bottom: 16px;
+      color: #000
+    }
+
+    html body h1 {
+      font-size: 2.25em;
+      font-weight: 300;
+      padding-bottom: .3em
+    }
+
+    html body h2 {
+      font-size: 1.75em;
+      font-weight: 400;
+      padding-bottom: .3em
+    }
+
+    html body h3 {
+      font-size: 1.5em;
+      font-weight: 500
+    }
+
+    html body h4 {
+      font-size: 1.25em;
+      font-weight: 600
+    }
+
+    html body h5 {
+      font-size: 1.1em;
+      font-weight: 600
+    }
+
+    html body h6 {
+      font-size: 1em;
+      font-weight: 600
+    }
+
+    html body h1,
+    html body h2,
+    html body h3,
+    html body h4,
+    html body h5 {
+      font-weight: 600
+    }
+
+    html body h5 {
+      font-size: 1em
+    }
+
+    html body h6 {
+      color: #5c5c5c
+    }
+
+    html body strong {
+      color: #000
+    }
+
+    html body del {
+      color: #5c5c5c
+    }
+
+    html body a:not([href]) {
+      color: inherit;
+      text-decoration: none
+    }
+
+    html body a {
+      color: #08c;
+      text-decoration: none
+    }
+
+    html body a:hover {
+      color: #00a3f5;
+      text-decoration: none
+    }
+
+    html body img {
+      max-width: 100%
+    }
+
+    html body>p {
+      margin-top: 0;
+      margin-bottom: 16px;
+      word-wrap: break-word
+    }
+
+    html body>ol,
+    html body>ul {
+      margin-bottom: 16px
+    }
+
+    html body ol,
+    html body ul {
+      padding-left: 2em
+    }
+
+    html body ol.no-list,
+    html body ul.no-list {
+      padding: 0;
+      list-style-type: none
+    }
+
+    html body ol ol,
+    html body ol ul,
+    html body ul ol,
+    html body ul ul {
+      margin-top: 0;
+      margin-bottom: 0
+    }
+
+    html body li {
+      margin-bottom: 0
+    }
+
+    html body li.task-list-item {
+      list-style: none
+    }
+
+    html body li>p {
+      margin-top: 0;
+      margin-bottom: 0
+    }
+
+    html body .task-list-item-checkbox {
+      margin: 0 .2em .25em -1.8em;
+      vertical-align: middle
+    }
+
+    html body .task-list-item-checkbox:hover {
+      cursor: pointer
+    }
+
+    html body blockquote {
+      margin: 16px 0;
+      font-size: inherit;
+      padding: 0 15px;
+      color: #5c5c5c;
+      background-color: #f0f0f0;
+      border-left: 4px solid #d6d6d6
+    }
+
+    html body blockquote>:first-child {
+      margin-top: 0
+    }
+
+    html body blockquote>:last-child {
+      margin-bottom: 0
+    }
+
+    html body hr {
+      height: 4px;
+      margin: 32px 0;
+      background-color: #d6d6d6;
+      border: 0 none
+    }
+
+    html body table {
+      margin: 10px 0 15px 0;
+      border-collapse: collapse;
+      border-spacing: 0;
+      display: block;
+      width: 100%;
+      overflow: auto;
+      word-break: normal;
+      word-break: keep-all
+    }
+
+    html body table th {
+      font-weight: 700;
+      color: #000
+    }
+
+    html body table td,
+    html body table th {
+      border: 1px solid #d6d6d6;
+      padding: 6px 13px
+    }
+
+    html body dl {
+      padding: 0
+    }
+
+    html body dl dt {
+      padding: 0;
+      margin-top: 16px;
+      font-size: 1em;
+      font-style: italic;
+      font-weight: 700
+    }
+
+    html body dl dd {
+      padding: 0 16px;
+      margin-bottom: 16px
+    }
+
+    html body code {
+      font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+      font-size: .85em;
+      color: #000;
+      background-color: #f0f0f0;
+      border-radius: 3px;
+      padding: .2em 0
+    }
+
+    html body code::after,
+    html body code::before {
+      letter-spacing: -.2em;
+      content: '\00a0'
+    }
+
+    html body pre>code {
+      padding: 0;
+      margin: 0;
+      word-break: normal;
+      white-space: pre;
+      background: 0 0;
+      border: 0
+    }
+
+    html body .highlight {
+      margin-bottom: 16px
+    }
+
+    html body .highlight pre,
+    html body pre {
+      padding: 1em;
+      overflow: auto;
+      line-height: 1.45;
+      border: #d6d6d6;
+      border-radius: 3px
+    }
+
+    html body .highlight pre {
+      margin-bottom: 0;
+      word-break: normal
+    }
+
+    html body pre code,
+    html body pre tt {
+      display: inline;
+      max-width: initial;
+      padding: 0;
+      margin: 0;
+      overflow: initial;
+      line-height: inherit;
+      word-wrap: normal;
+      background-color: transparent;
+      border: 0
+    }
+
+    html body pre code:after,
+    html body pre code:before,
+    html body pre tt:after,
+    html body pre tt:before {
+      content: normal
+    }
+
+    html body blockquote,
+    html body dl,
+    html body ol,
+    html body p,
+    html body pre,
+    html body ul {
+      margin-top: 0;
+      margin-bottom: 16px
+    }
+
+    html body kbd {
+      color: #000;
+      border: 1px solid #d6d6d6;
+      border-bottom: 2px solid #c7c7c7;
+      padding: 2px 4px;
+      background-color: #f0f0f0;
+      border-radius: 3px
+    }
+
+    @media print {
+      html body {
+        background-color: #fff
+      }
+
+      html body h1,
+      html body h2,
+      html body h3,
+      html body h4,
+      html body h5,
+      html body h6 {
+        color: #000;
+        page-break-after: avoid
+      }
+
+      html body blockquote {
+        color: #5c5c5c
+      }
+
+      html body pre {
+        page-break-inside: avoid
+      }
+
+      html body table {
+        display: table
+      }
+
+      html body img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%
+      }
+
+      html body code,
+      html body pre {
+        word-wrap: break-word;
+        white-space: pre
+      }
+    }
+
+    .markdown-preview {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box
+    }
+
+    .markdown-preview ul {
+      list-style: disc
+    }
+
+    .markdown-preview ul ul {
+      list-style: circle
+    }
+
+    .markdown-preview ul ul ul {
+      list-style: square
+    }
+
+    .markdown-preview ol {
+      list-style: decimal
+    }
+
+    .markdown-preview ol ol,
+    .markdown-preview ul ol {
+      list-style-type: lower-roman
+    }
+
+    .markdown-preview ol ol ol,
+    .markdown-preview ol ul ol,
+    .markdown-preview ul ol ol,
+    .markdown-preview ul ul ol {
+      list-style-type: lower-alpha
+    }
+
+    .markdown-preview .newpage,
+    .markdown-preview .pagebreak {
+      page-break-before: always
+    }
+
+    .markdown-preview pre.line-numbers {
+      position: relative;
+      padding-left: 3.8em;
+      counter-reset: linenumber
+    }
+
+    .markdown-preview pre.line-numbers>code {
+      position: relative
+    }
+
+    .markdown-preview pre.line-numbers .line-numbers-rows {
+      position: absolute;
+      pointer-events: none;
+      top: 1em;
+      font-size: 100%;
+      left: 0;
+      width: 3em;
+      letter-spacing: -1px;
+      border-right: 1px solid #999;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none
+    }
+
+    .markdown-preview pre.line-numbers .line-numbers-rows>span {
+      pointer-events: none;
+      display: block;
+      counter-increment: linenumber
+    }
+
+    .markdown-preview pre.line-numbers .line-numbers-rows>span:before {
+      content: counter(linenumber);
+      color: #999;
+      display: block;
+      padding-right: .8em;
+      text-align: right
+    }
+
+    .markdown-preview .mathjax-exps .MathJax_Display {
+      text-align: center !important
+    }
+
+    .markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group {
+      display: none
+    }
+
+    .markdown-preview:not([data-for=preview]) .code-chunk .status {
+      display: none
+    }
+
+    .markdown-preview:not([data-for=preview]) .code-chunk .output-div {
+      margin-bottom: 16px
+    }
+
+    .markdown-preview .md-toc {
+      padding: 0
+    }
+
+    .markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link {
+      display: inline;
+      padding: .25rem 0
+    }
+
+    .markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,
+    .markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p {
+      display: inline
+    }
+
+    .markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link {
+      font-weight: 800
+    }
+
+    .scrollbar-style::-webkit-scrollbar {
+      width: 8px
+    }
+
+    .scrollbar-style::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: transparent
+    }
+
+    .scrollbar-style::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background-color: rgba(150, 150, 150, .66);
+      border: 4px solid rgba(150, 150, 150, .66);
+      background-clip: content-box
+    }
+
+    html body[for=html-export]:not([data-presentation-mode]) {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      overflow: auto
+    }
+
+    html body[for=html-export]:not([data-presentation-mode]) .markdown-preview {
+      position: relative;
+      top: 0;
+      min-height: 100vh
+    }
+
+    @media screen and (min-width:914px) {
+      html body[for=html-export]:not([data-presentation-mode]) .markdown-preview {
+        padding: 2em calc(50% - 457px + 2em)
+      }
+    }
+
+    @media screen and (max-width:914px) {
+      html body[for=html-export]:not([data-presentation-mode]) .markdown-preview {
+        padding: 2em
+      }
+    }
+
+    @media screen and (max-width:450px) {
+      html body[for=html-export]:not([data-presentation-mode]) .markdown-preview {
+        font-size: 14px !important;
+        padding: 1em
+      }
+    }
+
+    @media print {
+      html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn {
+        display: none
+      }
+    }
+
+    html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn {
+      position: fixed;
+      bottom: 8px;
+      left: 8px;
+      font-size: 28px;
+      cursor: pointer;
+      color: inherit;
+      z-index: 99;
+      width: 32px;
+      text-align: center;
+      opacity: .4
+    }
+
+    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn {
+      opacity: 1
+    }
+
+    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 100%;
+      padding: 32px 0 48px 0;
+      font-size: 14px;
+      box-shadow: 0 0 4px rgba(150, 150, 150, .33);
+      box-sizing: border-box;
+      overflow: auto;
+      background-color: inherit
+    }
+
+    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar {
+      width: 8px
+    }
+
+    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: transparent
+    }
+
+    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background-color: rgba(150, 150, 150, .66);
+      border: 4px solid rgba(150, 150, 150, .66);
+      background-clip: content-box
+    }
+
+    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a {
+      text-decoration: none
+    }
+
+    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc {
+      padding: 0 16px
+    }
+
+    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link {
+      display: inline;
+      padding: .25rem 0
+    }
+
+    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,
+    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p {
+      display: inline
+    }
+
+    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link {
+      font-weight: 800
+    }
+
+    html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+      left: 300px;
+      width: calc(100% - 300px);
+      padding: 2em calc(50% - 457px - 300px / 2);
+      margin: 0;
+      box-sizing: border-box
+    }
+
+    @media screen and (max-width:1274px) {
+      html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+        padding: 2em
+      }
+    }
+
+    @media screen and (max-width:450px) {
+      html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+        width: 100%
+      }
+    }
+
+    html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview {
+      left: 50%;
+      transform: translateX(-50%)
+    }
+
+    html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc {
+      display: none
+    }
+
+    /* Please visit the URL below for more information: */
+    /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+  </style>
+  <!-- The content below will be included at the end of the <head> element. -->
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+      // your code here
+    });
+  </script>
+</head>
+
+<body for="html-export">
+
+
+  <div class="crossnote markdown-preview  ">
+
+    <h1 id="linux学习️">Linux学习🫶❤️ </h1>
+    <h2 id="-linux小常识-">✨ Linux小常识 ✨ </h2>
+    <ul>
+      <li>
+        <p><strong>特殊路径符</strong></p>
+        <ul>
+          <li><strong>.</strong> 表示当前目录</li>
+          <li><strong>..</strong> 表示上级目录</li>
+          <li><strong>~</strong> 表示home目录</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>通配符</strong></p>
+        <ul>
+          <li><strong>*</strong> 表示通配符，匹配任何内容（包含空）</li>
+          <li><strong>*test</strong> 表示匹配任何以test结尾的内容</li>
+          <li><strong>test*</strong> 表示匹配任何以test开头的内容</li>
+          <li><strong>*test*</strong> 表示匹配任何包含test的内容</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>管道符</strong></p>
+        <ul>
+          <li><strong>|</strong> 表示管道符，将左边的结果作为右边的输入</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>反引号</strong></p>
+        <ul>
+          <li><strong>`</strong> 表示反引号，被反引号包裹的文本将被当做命令执行</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>重定向符</strong></p>
+        <ul>
+          <li><strong>&gt;</strong> 将符号左侧命令的结果 <strong>覆盖</strong> 写入符号右侧指定的文件</li>
+          <li><strong>&gt;&gt;</strong> 将符号左侧命令的结果 <strong>追加</strong> 写入符号右侧指定的文件</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>$符</strong></p>
+        <ul>
+          <li><strong>$</strong> 表示取得变量的值，如系统环境变量path: "$PATH"</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>vim编辑器</strong><br>
+          <img src="images\vim%E7%BC%96%E8%BE%91%E5%99%A8%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F.png" alt="vim编辑器工作模式"
+            title="vim编辑器工作模式"><br>
+          <img
+            src="images\%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E8%BF%9B%E5%85%A5%E6%8F%92%E5%85%A5%E6%A8%A1%E5%BC%8F.png"
+            alt="命令模式进入插入模式" title="命令模式进入插入模式"><br>
+          <img src="images\%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%A1%A8%E6%A0%BC1.png"
+            alt="命令模式" title="命令模式"><br>
+          <img src="images\%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%A1%A8%E6%A0%BC2.png"
+            alt="命令模式" title="命令模式"><br>
+          <img src="images\%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%A1%A8%E6%A0%BC3.png"
+            alt="底线模式" title="底线模式">
+        </p>
+      </li>
+      <li>
+        <p><strong>权限的数字序号</strong><br>
+          <img src="images\%E6%9D%83%E9%99%90%E7%9A%84%E6%95%B0%E5%AD%97%E5%BA%8F%E5%8F%B7.png" alt="权限的数字序号"
+            title="权限的数字序号">
+        </p>
+      </li>
+      <li>
+        <p><strong>快捷键小技巧</strong><br>
+          <img src="images\%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%B0%8F%E6%8A%80%E5%B7%A7.png" alt="快捷键小技巧" title="快捷键小技巧">
+        </p>
+      </li>
+      <li>
+        <p><strong>top命令快捷键</strong><br>
+          <img src="images\top%E5%BF%AB%E6%8D%B7%E9%94%AE.png" alt="top快捷键" title="top快捷键">
+        </p>
+      </li>
+      <li>
+        <p><strong>iostat选项信息说明</strong><br>
+          <img src="images\iostat%E9%80%89%E9%A1%B9%E4%BF%A1%E6%81%AF%E8%AF%B4%E6%98%8E.png" alt="iostat选项信息说明"
+            title="iostat选项信息说明">
+        </p>
+      </li>
+      <li>
+        <p><strong>sar命令网络统计信息解读（<code>sar -n DEV</code>）</strong><br>
+          <img
+            src="images\sar%E5%91%BD%E4%BB%A4%E7%BD%91%E7%BB%9C%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF%E8%A7%A3%E8%AF%BB.png"
+            alt="sar命令网络统计信息解读" title="sar命令网络统计信息解读">
+        </p>
+      </li>
+      <li>
+        <p><strong>Linux设置环境变量</strong><br>
+          <img src="images\Linux%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.png" alt="Linux设置环境变量"
+            title="Linux设置环境变量">
+        </p>
+      </li>
+    </ul>
+    <h2 id="-linux命令-">✨ Linux命令 ✨ </h2>
+    <ul>
+      <li><strong>ls</strong><br>
+        <strong>展示</strong>文件和文件夹
+        <ul>
+          <li><em>-a</em> ：展示全部文件（包括隐藏文件）</li>
+          <li><em>-l</em> ：以列表形式平铺展开</li>
+          <li><em>-h</em> ：显示文件大小</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">ls</span> <span class="token punctuation">[</span>-a <span class="token parameter variable">-l</span> -h<span class="token punctuation">]</span> Linux路径
+</code></pre>
+    <ul>
+      <li><strong>cd</strong><br>
+        切换路径 (Change Directory)</li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token builtin class-name">cd</span> Linux路径
+</code></pre>
+    <ul>
+      <li><strong>pwd</strong><br>
+        <strong>展示</strong>当前工作目录 (Print Work Directory)
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token builtin class-name">pwd</span>
+</code></pre>
+    <ul>
+      <li><strong>mkdir</strong><br>
+        <strong>创建</strong>目录 (Make Directory)
+        <ul>
+          <li><em>-p</em> ：自动创建不存在的父级目录，用于多层级目录嵌套</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">mkdir</span> <span class="token punctuation">[</span>-p<span class="token punctuation">]</span> Linux路径
+</code></pre>
+    <ul>
+      <li><strong>touch</strong><br>
+        <strong>创建</strong>文件
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">touch</span> 文件路径
+</code></pre>
+    <ul>
+      <li><strong>cat</strong><br>
+        <strong>查看</strong>文件
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">cat</span> 文件路径
+</code></pre>
+    <ul>
+      <li><strong>more</strong><br>
+        <strong>查看</strong>文件（大文件）(按下键盘q键退出查看)
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">more</span> 文件路径
+</code></pre>
+    <ul>
+      <li><strong>cp</strong><br>
+        <strong>复制</strong>文件或文件夹(copy)
+        <ul>
+          <li><em>-r</em> ：用于复制文件夹，表示递归</li>
+          <li>参数1： Linux路径，表示被复制的文件或文件夹</li>
+          <li>参数2： Linux路径，表示复制的目标位置</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">cp</span> <span class="token punctuation">[</span>-r<span class="token punctuation">]</span> 参数1 参数2
+</code></pre>
+    <ul>
+      <li><strong>mv</strong><br>
+        <strong>移动</strong>文件或文件夹(move)
+        <ul>
+          <li>参数1： Linux路径，表示被移动的文件或文件夹</li>
+          <li>参数2： Linux路径，表示移动的目标位置，若目标不存在则会进行重命名</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">mv</span> 参数1 参数2
+</code></pre>
+    <ul>
+      <li><strong>rm</strong><br>
+        <strong>删除</strong>文件或文件夹(remove)
+        <ul>
+          <li><em>-r</em> ：用于删除文件夹，表示递归</li>
+          <li><em>-f</em> ：强制删除，不会弹确认信息</li>
+          <li>参数1、参数2...参数n： Linux路径，表示删除的文件或文件夹</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">rm</span> <span class="token punctuation">[</span>-r -f<span class="token punctuation">]</span> 参数1 参数2 <span class="token punctuation">..</span>. 参数n
+</code></pre>
+    <ul>
+      <li><strong>which</strong><br>
+        查看命令程序的文件存放位置</li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">which</span> 命令
+</code></pre>
+    <ul>
+      <li><strong>find</strong><br>
+        <strong>搜索</strong>指定文件或文件夹
+        <ul>
+          <li><em>+、-</em> ：表示大于、小于</li>
+          <li><em>n</em> ：表示数字（文件大小数字）</li>
+          <li><em>k、M、G</em> ：表示文件大小单位，对应 kb、MB、GB</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">find</span> 起始路径 <span class="token parameter variable">-name</span> 文件名
+<span class="token function">find</span> 起始路径 <span class="token parameter variable">-size</span> +<span class="token operator">|</span>-n<span class="token punctuation">[</span>kMG<span class="token punctuation">]</span>
+
+<span class="token function">find</span> / <span class="token parameter variable">-name</span> test*
+<span class="token function">find</span> / <span class="token parameter variable">-size</span> +10GB
+</code></pre>
+    <ul>
+      <li><strong>grep</strong><br>
+        通过关键字<strong>过滤</strong>指定文件行
+        <ul>
+          <li><em>-n</em> ：显示匹配的行号</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">grep</span> <span class="token punctuation">[</span>-n<span class="token punctuation">]</span> 关键字 文件路径
+</code></pre>
+    <ul>
+      <li><strong>wc</strong><br>
+        <strong>统计</strong>指定文件的行数、单词数量等（默认-lwc）
+        <ul>
+          <li><em>-c</em> ：统计bytes数量</li>
+          <li><em>-m</em> ：统计字符数量</li>
+          <li><em>-l</em> ：统计行数</li>
+          <li><em>-w</em> ：统计单词数量</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">wc</span> <span class="token punctuation">[</span>-c <span class="token parameter variable">-m</span> <span class="token parameter variable">-l</span> -w<span class="token punctuation">]</span> 文件路径
+</code></pre>
+    <ul>
+      <li><strong>echo</strong><br>
+        在命令行<strong>输出</strong>指定内容</li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token builtin class-name">echo</span> 输出内容
+</code></pre>
+    <ul>
+      <li><strong>tail</strong><br>
+        <strong>查看</strong>文件尾部内容、<strong>追踪</strong>文件的最新更改
+        <ul>
+          <li><em>-f</em> ： 追踪文件</li>
+          <li><em>-num</em> ：查看尾部多少行，默认10行</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">tail</span> <span class="token punctuation">[</span>-f -num<span class="token punctuation">]</span> 文件路径
+</code></pre>
+    <ul>
+      <li><strong>vi/vim</strong><br>
+        <strong>编辑</strong>文件
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">vi</span><span class="token operator">|</span><span class="token function">vim</span> 文件路径
+</code></pre>
+    <ul>
+      <li><strong>su</strong><br>
+        <strong>切换用户</strong>(Switch User)<br>
+        省略用户名默认切换至root
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">su</span> - <span class="token punctuation">[</span>用户名<span class="token punctuation">]</span>
+</code></pre>
+    <ul>
+      <li><strong>sudo</strong><br>
+        为普通用户的命令授权，具有临时root权限（需配置）</li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">sudo</span> 其它命令
+</code></pre>
+    <ul>
+      <li><strong>groupadd</strong><br>
+        创建用户组（需root用户执行）</li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">groupadd</span> 用户组名
+</code></pre>
+    <ul>
+      <li><strong>groupdel</strong><br>
+        删除用户组（需root用户执行）</li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">groupdel</span> 用户组名
+</code></pre>
+    <ul>
+      <li><strong>useradd</strong><br>
+        添加用户（需root用户执行）
+        <ul>
+          <li><em>-g</em> ： 指定用户的组，不填-g，会创建同名组并自动加入。如果已存在同名组，必须使用-g；使用-g需要组已经存在</li>
+          <li><em>-d</em> ： 指定用户HOME目录，不填则默认在：/home/用户名</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">useradd</span> <span class="token punctuation">[</span>-g 用户组<span class="token punctuation">]</span> <span class="token punctuation">[</span>-d Linux路径<span class="token punctuation">]</span> 用户名
+</code></pre>
+    <ul>
+      <li><strong>userdel</strong><br>
+        删除用户（需root用户执行）
+        <ul>
+          <li><em>-r</em> ： 删除用户的HOME目录，不填则不删除</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">userdel</span> <span class="token punctuation">[</span>-r<span class="token punctuation">]</span> 用户名
+</code></pre>
+    <ul>
+      <li><strong>id</strong><br>
+        查看用户所属组（需root用户执行）<br>
+        不提供用户名则是查看本身</li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">id</span> <span class="token punctuation">[</span>用户名<span class="token punctuation">]</span>
+</code></pre>
+    <ul>
+      <li><strong>usermod</strong><br>
+        修改用户所属组（需root用户执行）<br>
+        将指定用户加入指定用户组</li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">usermod</span> <span class="token parameter variable">-aG</span> 用户组 用户名
+</code></pre>
+    <ul>
+      <li>
+        <p><strong>getent</strong><br>
+          查看系统中有哪些<strong>用户</strong>（getent passwd）</p>
+        <blockquote>
+          <p>root:x:0:0:root:/root:/bin/bash<br>
+            <em>用户名:密码:用户ID:用户组ID:描述信息:HOME目录:执行终端（默认bash）</em>
+          </p>
+        </blockquote>
+        <p>查看系统中有哪些<strong>组</strong>（getent group）</p>
+        <blockquote>
+          <p>root:x:0<br>
+            <em>组名:组认证:组ID</em>
+          </p>
+        </blockquote>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code>getent <span class="token function">passwd</span>
+getent group
+</code></pre>
+    <ul>
+      <li><strong>chmod</strong><br>
+        修改文件、文件夹的<strong>权限信息</strong>（只有文件、文件夹的所属用户或root用户可以修改）
+        <ul>
+          <li><em>-R</em> ： 对文件夹内的全部内容应用同样的操作<br>
+            u表示user所属用户权限，g表示组权限，o表示其它用户权限</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">chmod</span> <span class="token punctuation">[</span>-R<span class="token punctuation">]</span> 权限 Linux路径
+
+<span class="token function">chmod</span> <span class="token parameter variable">-R</span> <span class="token assign-left variable">u</span><span class="token operator">=</span>rwx,g<span class="token operator">=</span>rw,o<span class="token operator">=</span>r <span class="token builtin class-name">test</span>
+<span class="token function">chmod</span> <span class="token parameter variable">-R</span> <span class="token number">764</span> <span class="token builtin class-name">test</span>
+</code></pre>
+    <ul>
+      <li><strong>chown</strong><br>
+        修改文件、文件夹的所属<strong>用户和用户组</strong>（需root用户执行）
+        <ul>
+          <li><em>-R</em> ： 对文件夹内的全部内容应用同样的操作</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">chown</span> <span class="token punctuation">[</span>-R<span class="token punctuation">]</span> <span class="token punctuation">[</span>用户<span class="token punctuation">]</span><span class="token punctuation">[</span>:<span class="token punctuation">]</span><span class="token punctuation">[</span>用户组<span class="token punctuation">]</span> Linux路径
+
+<span class="token function">chown</span> root <span class="token builtin class-name">test</span>
+<span class="token function">chown</span> <span class="token parameter variable">-R</span> :root <span class="token builtin class-name">test</span>
+<span class="token function">chown</span> <span class="token parameter variable">-R</span> root:jiao <span class="token builtin class-name">test</span>
+</code></pre>
+    <ul>
+      <li><strong>yum</strong><br>
+        RPM包管理器，用于自动化安装配置Linux软件，并可以自动解决依赖问题（需要root权限）
+        <ul>
+          <li><em>-y</em> ： 自动确认，无需手动确认安装或卸载过程</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code>yum <span class="token punctuation">[</span>-y<span class="token punctuation">]</span> <span class="token function">install</span><span class="token operator">|</span>remove<span class="token operator">|</span>search 软件名
+</code></pre>
+    <ul>
+      <li><strong>systemctl</strong><br>
+        linux很多软件支持使用systemctl命令控制：<strong>启动、停止、开机自启</strong>，能被systemctl管理的软件一般称为：<strong>服务</strong>
+        <ul>
+          <li><em>start</em> ： 启动服务</li>
+          <li><em>stop</em> ： 停止服务</li>
+          <li><em>status</em> ： 服务状态</li>
+          <li><em>enable</em> ： 启动开机自启</li>
+          <li><em>disable</em> ： 关闭开机自启</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code>systemctl start<span class="token operator">|</span>stop<span class="token operator">|</span>status<span class="token operator">|</span><span class="token builtin class-name">enable</span><span class="token operator">|</span>disable 服务名
+</code></pre>
+    <ul>
+      <li><strong>ln</strong><br>
+        <strong>软链接</strong>，将文件或文件夹链接到其它位置
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">ln</span> <span class="token parameter variable">-s</span> 被链接文件或文件夹 链接去的目的地 
+</code></pre>
+    <ul>
+      <li><strong>date</strong><br>
+        查看系统时间
+        <ul>
+          <li><em>-d</em> ： 按照给定字符显示日期，一般用于日期计算</li>
+          <li><em>%Y</em> ： 年</li>
+          <li><em>%y</em> ： 年份后两位数字</li>
+          <li><em>%m</em> ： 月</li>
+          <li><em>%d</em> ： 日</li>
+          <li><em>%H</em> ： 时</li>
+          <li><em>%M</em> ： 分</li>
+          <li><em>%S</em> ： 秒</li>
+          <li><em>%s</em> ： 时间戳</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">date</span> <span class="token punctuation">[</span>-d<span class="token punctuation">]</span> <span class="token punctuation">[</span>+格式化字符串<span class="token punctuation">]</span>
+
+<span class="token function">date</span> <span class="token string">"+%Y-%m-%d %H:%M:%S"</span>
+</code></pre>
+    <ul>
+      <li><strong>ifconfig</strong><br>
+        <strong>查看</strong>ip
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">ifconfig</span>
+</code></pre>
+    <ul>
+      <li><strong>hostname</strong><br>
+        <strong>查看</strong>主机名
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">hostname</span>
+</code></pre>
+    <ul>
+      <li><strong>hostnamectl</strong><br>
+        <strong>修改</strong>主机名（需root用户执行）
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code>hostnamectl set-hostname 主机名
+</code></pre>
+    <ul>
+      <li><strong>ping</strong><br>
+        检查指定的网络服务器是否是可联通状态
+        <ul>
+          <li><em>-c</em> ： 检查次数，不填-c则无限次检查</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">ping</span> <span class="token punctuation">[</span>-c num<span class="token punctuation">]</span> ip或主机名
+
+<span class="token function">ping</span> <span class="token parameter variable">-c</span> <span class="token number">5</span> bilibili.com
+</code></pre>
+    <ul>
+      <li><strong>curl</strong><br>
+        发起http网络请求，可用于获取信息或下载文件
+        <ul>
+          <li><em>-O</em> ： 用于下载文件</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">curl</span> <span class="token punctuation">[</span>-O<span class="token punctuation">]</span> url
+
+<span class="token function">curl</span> cip.cc
+<span class="token function">curl</span> <span class="token parameter variable">-O</span> https://dlcdn.apache.org/hadoop/common/hadoop-3.4.0/hadoop-3.4.0-src.tar.gz
+</code></pre>
+    <ul>
+      <li><strong>ps</strong><br>
+        查看系统进程信息
+        <ul>
+          <li><em>-e</em> ： 显示全部</li>
+          <li><em>-f</em> ： 以完全格式化的形式展示信息</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">ps</span> <span class="token punctuation">[</span>-e -f<span class="token punctuation">]</span>
+</code></pre>
+    <ul>
+      <li><strong>kill</strong><br>
+        关闭系统进程
+        <ul>
+          <li><em>-9</em> ： 强制关闭</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">kill</span> <span class="token punctuation">[</span>-9<span class="token punctuation">]</span> 进程号
+</code></pre>
+    <ul>
+      <li><strong>top</strong><br>
+        查看cpu、内存等使用情况
+        <ul>
+          <li><em>-p</em> ： 只显示某个进程信息（选项后面跟进程号）</li>
+          <li><em>-d</em> ： 设置刷新时间</li>
+          <li><em>-c</em> ： 显示进程的完整名称</li>
+          <li><em>-n</em> ： 指定刷新次数，刷新后退出</li>
+          <li><em>-b</em> ：
+            以非交互非全屏模式运行，以批次的方式执行top（原本的覆盖刷新变为追加刷新），一般配合-n指定输出几次统计信息，将输出重定向到指定文件。比如：<code>top -b -n 3 &gt; /tmp/top.tmp</code>
+          </li>
+          <li><em>-i</em> ： 不显示任何闲置（idle）或无用（zombie）的进程</li>
+          <li><em>-u</em> ： 查找特定用户启动的进程</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">top</span> <span class="token punctuation">[</span>-p <span class="token parameter variable">-d</span> <span class="token parameter variable">-c</span> <span class="token parameter variable">-n</span> <span class="token parameter variable">-b</span> <span class="token parameter variable">-i</span> -u<span class="token punctuation">]</span>
+</code></pre>
+    <ul>
+      <li><strong>df</strong><br>
+        查看硬盘使用情况
+        <ul>
+          <li><em>-h</em> ： 优化单位显示</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">df</span> <span class="token punctuation">[</span>-h<span class="token punctuation">]</span>
+</code></pre>
+    <ul>
+      <li><strong>iostat</strong><br>
+        查看CPU、磁盘使用情况
+        <ul>
+          <li><em>-x</em> ： 显示更多信息</li>
+          <li><em>num1</em> ： 刷新间隔</li>
+          <li><em>num2</em> ： 刷新次数</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code>iostat <span class="token punctuation">[</span>-x<span class="token punctuation">]</span> <span class="token punctuation">[</span>num1<span class="token punctuation">]</span> <span class="token punctuation">[</span>num2<span class="token punctuation">]</span>
+</code></pre>
+    <ul>
+      <li><strong>sar</strong><br>
+        查看网络相关统计（由于sar命令复杂，本处仅简单用于统计网络）
+        <ul>
+          <li><em>-n</em> ： 查看网络</li>
+          <li><em>DEV</em> ： 查看网络接口</li>
+          <li><em>num1</em> ： 刷新间隔（不填则查看一次就结束）</li>
+          <li><em>num2</em> ： 刷新次数（不填则无限次）</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code>sar <span class="token punctuation">[</span>-n<span class="token punctuation">]</span> <span class="token punctuation">[</span>DEV<span class="token punctuation">]</span> <span class="token punctuation">[</span>num1<span class="token punctuation">]</span> <span class="token punctuation">[</span>num2<span class="token punctuation">]</span>
+</code></pre>
+    <ul>
+      <li><strong>env</strong><br>
+        查看系统环境变量</li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">env</span>
+</code></pre>
+    <ul>
+      <li><strong>source</strong><br>
+        编译系统环境变量文件
+        <ul>
+          <li><em>~/.bashrc</em> ： 针对当前用户</li>
+          <li><em>/etc/profile</em> ：针对所有用户</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token builtin class-name">source</span> ~/.bashrc
+<span class="token builtin class-name">source</span> /etc/profile
+</code></pre>
+    <ul>
+      <li><strong>tar</strong><br>
+        解压或压缩文件（格式为.tar或.gz(gzip)）
+        <ul>
+          <li><em>-c</em> ： 压缩模式</li>
+          <li><em>-x</em> ： 解压模式</li>
+          <li><em>-v</em> ： 显示压缩或解压进度</li>
+          <li><em>-z</em> ： gzip模式，默认tarball格式，建议放所有选项的第一位</li>
+          <li><em>-f</em> ： 要创建或解压的文件，必须位于所有选项的最后一位</li>
+          <li><em>-C</em> ： 解压目的地</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">tar</span> <span class="token punctuation">[</span>-c <span class="token parameter variable">-x</span> <span class="token parameter variable">-v</span> <span class="token parameter variable">-z</span> <span class="token parameter variable">-f</span> -C<span class="token punctuation">]</span> 参数1 参数2 <span class="token punctuation">..</span>. 参数N
+
+<span class="token comment"># 常见的压缩组合</span>
+<span class="token function">tar</span> <span class="token parameter variable">-cvf</span> test.tar <span class="token number">1</span>.txt <span class="token number">2</span>.txt  <span class="token comment"># 将两个txt文件压缩为 test.tar</span>
+<span class="token function">tar</span> <span class="token parameter variable">-zcvf</span> test.gz <span class="token number">1</span>.txt <span class="token number">2</span>.txt  <span class="token comment"># 将两个txt文件压缩为 test.gz</span>
+<span class="token comment"># 常见的解压组合</span>
+<span class="token function">tar</span> <span class="token parameter variable">-xvf</span> test.tar              <span class="token comment"># 解压 test.tar 到当前目录</span>
+<span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> test.gz <span class="token parameter variable">-C</span> ~/test    <span class="token comment"># 解压 test.gz 到 ~/test 目录</span>
+</code></pre>
+    <ul>
+      <li><strong>zip</strong><br>
+        压缩文件（格式为.zip）
+        <ul>
+          <li><em>-r</em> ： 压缩内容<strong>包含文件夹</strong>时使用</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">zip</span> <span class="token punctuation">[</span>-r<span class="token punctuation">]</span> 参数1 参数2 <span class="token punctuation">..</span>. 参数N
+
+<span class="token function">zip</span> <span class="token parameter variable">-r</span> test.zip Test <span class="token number">1</span>.txt <span class="token number">2</span>.txt  <span class="token comment"># 将Test文件夹和两个txt文件压缩为 test.zip</span>
+</code></pre>
+    <ul>
+      <li><strong>unzip</strong><br>
+        解压文件（格式为.zip）
+        <ul>
+          <li><em>-d</em> ： 解压目的地</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">unzip</span> 压缩包文件 <span class="token punctuation">[</span>-d<span class="token punctuation">]</span>
+
+<span class="token function">unzip</span> test.zip <span class="token parameter variable">-d</span> ~/test          <span class="token comment"># 解压 test.zip 到 ~/test 目录</span>
+</code></pre>
+    <h2 id="-linux第三方命令-">✨ Linux第三方命令 ✨ </h2>
+    <blockquote>
+      <p>wget</p>
+    </blockquote>
+    <ul>
+      <li><strong>wget</strong><br>
+        非交互式的文件下载器
+        <ul>
+          <li><em>-b</em> ： 后台下载，会将日志写入到当前工作目录的wget-log文件</li>
+        </ul>
+      </li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">wget</span> <span class="token punctuation">[</span>-b<span class="token punctuation">]</span> url
+</code></pre>
+    <blockquote>
+      <p>nmap</p>
+    </blockquote>
+    <ul>
+      <li><strong>nmap</strong><br>
+        查看端口占用情况</li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code>nmap IP地址
+</code></pre>
+    <blockquote>
+      <p>net-tools</p>
+    </blockquote>
+    <ul>
+      <li><strong>netstat</strong><br>
+        查看指定端口占用情况</li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code><span class="token function">netstat</span> <span class="token parameter variable">-anp</span> <span class="token operator">|</span> <span class="token function">grep</span> 端口号
+</code></pre>
+    <blockquote>
+      <p>lrzsz</p>
+    </blockquote>
+    <ul>
+      <li><strong>sz</strong><br>
+        下载文件</li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code>sz 文件路径
+</code></pre>
+    <ul>
+      <li><strong>rz</strong><br>
+        上传文件（速度慢，适合小文件）</li>
+    </ul>
+    <pre data-role="codeBlock" data-info="sh" class="language-bash sh"><code>rz
+</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

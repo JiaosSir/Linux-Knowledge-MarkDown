@@ -22,6 +22,9 @@
     - __\>__       将符号左侧命令的结果 **覆盖** 写入符号右侧指定的文件
     - __\>\>__     将符号左侧命令的结果 **追加** 写入符号右侧指定的文件
 
++ __$符__
+    - __$__       表示取得变量的值，如系统环境变量path: "\$PATH"
+
 + __vim编辑器__
     ![vim编辑器工作模式](/images/vim编辑器工作模式.png "vim编辑器工作模式")  
     ![命令模式进入插入模式](/images/命令模式进入插入模式.png "命令模式进入插入模式")
@@ -43,6 +46,9 @@
 
 + __sar命令网络统计信息解读（`sar -n DEV`）__
     ![sar命令网络统计信息解读](/images/sar命令网络统计信息解读.png "sar命令网络统计信息解读") 
+
++ __Linux设置环境变量__
+    ![Linux设置环境变量](/images/Linux设置环境变量.png "Linux设置环境变量") 
 
 ## ✨ Linux命令 ✨
 + __ls__
@@ -307,6 +313,12 @@ date [-d] [+格式化字符串]
 date "+%Y-%m-%d %H:%M:%S"
 ```
 
++ __ifconfig__ 
+    **查看**ip
+```sh
+ifconfig
+```
+
 + __hostname__ 
     **查看**主机名
 ```sh
@@ -392,6 +404,57 @@ iostat [-x] [num1] [num2]
 sar [-n] [DEV] [num1] [num2]
 ```
 
++ __env__ 
+    查看系统环境变量
+```sh
+env
+```
+
++ __source__ 
+    编译系统环境变量文件
+    - _~/.bashrc_ ：   针对当前用户
+    - _/etc/profile_ ：针对所有用户
+```sh
+source ~/.bashrc
+source /etc/profile
+```
+
++ __tar__ 
+    解压或压缩文件（格式为.tar或.gz(gzip)）
+    - _-c_ ：   压缩模式
+    - _-x_ ：   解压模式
+    - _-v_ ：   显示压缩或解压进度
+    - _-z_ ：   gzip模式，默认tarball格式，建议放所有选项的第一位
+    - _-f_ ：   要创建或解压的文件，必须位于所有选项的最后一位
+    - _-C_ ：   解压目的地
+```sh
+tar [-c -x -v -z -f -C] 参数1 参数2 ... 参数N
+
+# 常见的压缩组合
+tar -cvf test.tar 1.txt 2.txt  # 将两个txt文件压缩为 test.tar
+tar -zcvf test.gz 1.txt 2.txt  # 将两个txt文件压缩为 test.gz
+# 常见的解压组合
+tar -xvf test.tar              # 解压 test.tar 到当前目录
+tar -zxvf test.gz -C ~/test    # 解压 test.gz 到 ~/test 目录
+```
+
++ __zip__ 
+    压缩文件（格式为.zip）
+    - _-r_ ：   压缩内容**包含文件夹**时使用
+```sh
+zip [-r] 参数1 参数2 ... 参数N
+
+zip -r test.zip Test 1.txt 2.txt  # 将Test文件夹和两个txt文件压缩为 test.zip
+```
+
++ __unzip__ 
+    解压文件（格式为.zip）
+    - _-d_ ：   解压目的地
+```sh
+unzip 压缩包文件 [-d]
+
+unzip test.zip -d ~/test          # 解压 test.zip 到 ~/test 目录
+```
 
 ## ✨ Linux第三方命令 ✨
 > wget
@@ -414,4 +477,16 @@ nmap IP地址
     查看指定端口占用情况
 ```sh
 netstat -anp | grep 端口号
+```
+
+> lrzsz
++ __sz__ 
+    下载文件
+```sh
+sz 文件路径
+```
++ __rz__ 
+    上传文件（速度慢，适合小文件）
+```sh
+rz
 ```
